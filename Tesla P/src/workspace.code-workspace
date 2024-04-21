@@ -1,0 +1,84 @@
+{
+	"folders": [
+		{
+			"path": "../../LED PLUS"
+		},
+		{
+			"name": "LED together",
+			"path": "../../LED together"
+		},
+		{
+			"name": "led game",
+			"path": "../../led game"
+		},
+		{
+			"name": "LED game 2",
+			"path": "../../LED game 2"
+		},
+		{
+			"name": "LED 3",
+			"path": "../../LED 3"
+		},
+		{
+			"name": "LED example",
+			"path": "../../LED example"
+		},
+		{
+			"name": "main.3",
+			"path": "../../main.3"
+		},
+		{
+			"name": "Try to make fonctions",
+			"path": "../../Try to make fonctions"
+		},
+		{
+			"name": "doing tasks",
+			"path": "../../doing tasks"
+		},
+		{
+			"name": "doing tasks - model",
+			"path": "../../doing tasks - model"
+		},
+		{
+			"name": "digitread",
+			"path": "../../digitread"
+		},
+		{
+			"name": "sensor project",
+			"path": "../../sensor project"
+		},
+		{
+			"name": "test",
+			"path": "../../test"
+		},
+		{
+			"name": "My PIO library",
+			"path": "../../My PIO library"
+		},
+		{
+			"name": "Tesla P",
+			"path": ".."
+		},
+		{
+			"name": "Flexi Timer2",
+			"path": "../../Flexi Timer2"
+		},
+		{
+			"name": "servotest",
+			"path": "../../servotest"
+		},
+		{
+			"name": "weird thing",
+			"path": "../../weird thing"
+		},
+		{
+			"name": "___This project might crash___",
+			"path": "../../___This project might crash___"
+		},
+		{
+			"name": "Remote TeslaP",
+			"path": "../../../../../Desktop/Remote TeslaP"
+		}
+	],
+	"settings": {}
+}
