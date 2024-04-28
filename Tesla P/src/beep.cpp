@@ -20,7 +20,7 @@ int rangeToBeeptime()
 void beep_setup()
 {
     pinMode(beepPin, OUTPUT);
-    digitalWrite (beepPin, LOW);
+    digitalWrite(beepPin, LOW);
 }
 
 void beep_loop()
@@ -29,7 +29,7 @@ void beep_loop()
     if (remote_ready == false)
     {
         return;
-    } 
+    }
 
     if (Pack.joystick_z == 0)
     {
@@ -39,31 +39,4 @@ void beep_loop()
     {
         digitalWrite(beepPin, LOW);
     }
-
-    // int T = rangeToBeeptime();
-    // switch (T)
-    // {
-    // case -1:
-    //     digitalWrite(beepPin, LOW);
-    //     break;
-    // case -2:
-    //     digitalWrite(beepPin, HIGH);
-    //     break;
-    // default:
-    //     if (beep_counter > T / 10)
-    //     {
-    //         beep_counter = 0;
-    //         if (beepPower == 0)
-    //         {
-    //             digitalWrite(beepPin, HIGH);
-    //             beepPower = 1;
-    //         }
-    //         else if (beepPower == 1)
-    //         {
-    //             digitalWrite(beepPin, LOW);
-    //             beepPower = 0;
-    //         }
-    //     }
-    //     break;
-    // }
 }

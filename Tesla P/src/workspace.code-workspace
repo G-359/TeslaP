@@ -78,6 +78,9 @@
 		{
 			"name": "Remote TeslaP",
 			"path": "../../../../../Desktop/Remote TeslaP"
+		},
+		{
+			"path": "../../Tesla P backup"
 		}
 	],
 	"settings": {}

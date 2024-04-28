@@ -9,26 +9,22 @@ int current_range_index = 0;
 int max_range_index = 11;
 int ultrasonic_measurment_timer;
 bool ultrasonic_redy_for_servo = false;
-// ultrasonic
+
 long microsecondsToInches(long microseconds)
 {
     return microseconds / 74 / 2;
 }
 
-// ultrasonic
 long microsecondsToCentimeters(long microseconds)
 {
     return microseconds / 29 / 2;
 }
 
-// ultrasonic
 void Ultrasonic_setup()
 {
-    // Servo_setup();
-
     Serial.begin(9600); // Starting Serial Terminal
 }
-// ultrasonic
+
 void Ultrasonic_loop()
 {
     long duration, cm;
@@ -43,20 +39,7 @@ void Ultrasonic_loop()
     cm = microsecondsToCentimeters(duration);
     if (duration > 0)
     {
-
-        // ultrasonic_measurment_timer = 0;
-
         range = cm;
-        // Serial.print("distance of range ");
-        // // Serial.print(current_range_index);
-        // Serial.print(":");
-        // Serial.print(range);
-        // Serial.println("cm");
-        // current_range_index++;
-        // if (current_range_index == max_range_index)
-        // {
-        //     current_range_index = 0;
-        // }
     }
     ultrasonic_redy_for_servo = true;
 }

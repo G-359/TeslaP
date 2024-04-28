@@ -45,46 +45,6 @@ void servo_setup()
 
 void servo_loop()
 {
-  // servo
   servo_direction = 180.0 / 1023.0 * (float)Pack.pot_1;
   vero.write(servo_direction);
-
-  // if (servo_done == true)
-  //   return;
-  // if (servo_counter >= 50)
-  // {
-  //   servo_counter = 0;
-  //   if (ultrasonic_redy_for_servo == true)
-  //   {
-  //     vero.write(servo_index * 18);
-  //     distance[servo_index] = range;
-  //     // servo_counter = 0;
-  //     ultrasonic_redy_for_servo = false;
-  //     servo_index++;
-  //     if (servo_index > 11)
-  //     {
-  //       // servo_index = 0;
-  //       min_distance = 10000;
-  //       min_distance_index = 0;
-  //       pV = &distance[0];
-  //       for (int i = 0; i < 11; i++)
-  //       {
-  //         if (*pV < min_distance)
-  //         {
-  //           min_distance = *pV;
-  //           min_distance_index = i;
-  //         }
-  //         pV++;
-  //       }
-  //       // min_distance = range;
-  //       // Serial.println("Maximum distance : ");
-  //       // Serial.println(min_distance);
-  //       // Serial.println(range);
-  //       // Serial.println("Maximum distance's range index : ");
-  //       // Serial.println(min_distance_index);
-  //       vero.write(min_distance_index * 18);
-  //       servo_done = true;
-  //     }
-  //   }
-  // }
 }

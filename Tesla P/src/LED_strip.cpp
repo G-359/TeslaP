@@ -72,23 +72,9 @@ void LED_setup()
 
   while (!strip.begin())
     ;
-  // /***1***/
-  // strip.setAllLedsColor(0xFF0000);    // Set all LED color to red
-  // strip.setAllLedsColor(0x00FF00);    // set all LED color to green
-  // strip.setAllLedsColor(0x0000FF); // set all LED color to blue
-  // strip.setAllLedsColor(255, 255, 0); // set all LED color to yellow. this is just deffent form of rgb value.
-  // strip.setAllLedsColor(255, 255, 255);
-  // strip.setAllLedsColor(0, 0, 0); // set all LED off .
-  // /***2***/
-  // strip.setLedColor(0, 255, 0, 0);   // set the N0.0 LED to red
-  // strip.setLedColor(1, 0, 255, 0);   // set the N0.1 LED to green
-  // strip.setLedColor(2, 0, 0, 255);   // set the N0.2 LED to blue
-  // strip.setLedColor(3, 255, 255, 0); // set the N0.3 LED to yellow
-  // strip.setLedColor(4, 255, 0, 255); // set the N0.4 LED to purple
   currentPos = 0;
   prePos = 9;
   strip.setAllLedsColor(0, 0, 0);
-  // color = BLACK;
   currentColor = BLACK;
   nextColor = WHITE;
   strip.setAllLedsColor(255, 0, 0);
@@ -99,34 +85,12 @@ void LED_loop()
   // brightness
   brightness = 180.0 / 1023.0 * (float)Pack.pot_2;
 
-  // led strip roll
-  //  for (int k = 0; k < 255; k = k + 2)
-  //  {
-  //    strip.setAllLedsColorData(strip.Wheel(k)); // set color data for all LED
-  //    strip.show();                              // show the color set before
-  //  }
-
-  // for (int j = 0; j < 255; j += 2)
-  // {
-  //   for (int i = 0; i < LEDS_COUNT; i++)
-  //   {
-  //     strip.setLedColorData(i, strip.Wheel(i * 256 / LEDS_COUNT + j)); // set color data for LED one by one
-  //   }
-  //   strip.show(); // show the color set
-  // }
-
   if (remote_ready == false)
   {
     return;
   }
 
   // switch color
-
-  // if (current_s2_value != Pack.s_2)
-  // {
-  //   pre_s2_value = current_s2_value;
-  //   current_s2_value = Pack.s_2;
-  // }
 
   if (Pack.s_2 == 0)
   {
@@ -196,195 +160,4 @@ void LED_loop()
     break;
   }
   strip.show();
-
-  // this is the backup program. If the other program works, delete this program
-  //   change = false;
-
-  //   if (Pack.s_2 == 0)
-  //   {
-  //     change = true;
-  //   }
-
-  //   if (color == BLACK)
-  //   {
-  //     if (change == true)
-  //     {
-  //       brightness = 180.0 / 1023.0 * (float)Pack.pot_2;
-  //       strip.setAllLedsColor(brightness, 0, 0);
-  //       color = RED;
-  //       change = false;
-  //     }
-  //     else
-  //     {
-  //       brightness = 180.0 / 1023.0 * (float)Pack.pot_2;
-  //       strip.setAllLedsColor(0, 0, 0);
-  //     }
-  //   }
-
-  //   else if (color == RED)
-  //   {
-  //     if (change == true)
-  //     {
-  //       brightness = 180.0 / 1023.0 * (float)Pack.pot_2;
-  //       strip.setAllLedsColor(0, brightness, 0);
-  //       color = GREEN;
-  //       change = false;
-  //     }
-  //     else
-  //     {
-  //       brightness = 180.0 / 1023.0 * (float)Pack.pot_2;
-  //       strip.setAllLedsColor(brightness, 0, 0);
-  //     }
-  //   }
-
-  //   else if (color == GREEN)
-  //   {
-  //     if (change == true)
-  //     {
-  //       brightness = 180.0 / 1023.0 * (float)Pack.pot_2;
-  //       strip.setAllLedsColor(0, 0, brightness);
-  //       color = BLUE;
-  //       change = false;
-  //     }
-  //     else
-  //     {
-  //       brightness = 180.0 / 1023.0 * (float)Pack.pot_2;
-  //       strip.setAllLedsColor(0, brightness, 0);
-  //     }
-  //   }
-
-  //   else if (color == BLUE)
-  //   {
-  //     if (change == true)
-  //     {
-  //       brightness = 180.0 / 1023.0 * (float)Pack.pot_2;
-  //       strip.setAllLedsColor(brightness, brightness, 0);
-  //       color = YELLOW;
-  //       change = false;
-  //     }
-  //     else
-  //     {
-  //       brightness = 180.0 / 1023.0 * (float)Pack.pot_2;
-  //       strip.setAllLedsColor(0, 0, brightness);
-  //     }
-  //   }
-
-  //   else if (color == YELLOW)
-  //   {
-  //     if (change == true)
-  //     {
-  //       brightness = 180.0 / 1023.0 * (float)Pack.pot_2;
-  //       strip.setAllLedsColor(brightness, brightness, brightness);
-  //       color = WHITE;
-  //       change = false;
-  //     }
-  //     else
-  //     {
-  //       brightness = 180.0 / 1023.0 * (float)Pack.pot_2;
-  //       strip.setAllLedsColor(brightness, brightness, 0);
-  //     }
-  //   }
-
-  //   else if (color == WHITE)
-  //   {
-  //     if (change == true)
-  //     {
-  //       brightness = 180.0 / 1023.0 * (float)Pack.pot_2;
-  //       strip.setAllLedsColor(0, 0, 0);
-  //       color = BLACK;
-  //       change = false;
-  //     }
-  //     else
-  //     {
-  //       brightness = 180.0 / 1023.0 * (float)Pack.pot_2;
-  //       strip.setAllLedsColor(brightness, brightness, brightness);
-  //     }
-  //   }
-  // }
-
-  // switch (color)
-  // {
-  // case BLACK:
-  //   if (Pack.s_2 == 0)
-  //   {
-  //     strip.setAllLedsColor(255, 0, 0);
-  //     color = RED;
-  //   }
-  //   break;
-
-  // case RED:
-  //   if (Pack.s_2 == 0)
-  //   {
-  //     strip.setAllLedsColor(0, 255, 0);
-  //     color = GREEN;
-  //   }
-  //   break;
-
-  // case GREEN:
-  //   if (Pack.s_2 == 0)
-  //   {
-  //     strip.setAllLedsColor(0, 0, 255);
-  //     color = BLUE;
-  //   }
-  //   break;
-
-  // case BLUE:
-  //   if (Pack.s_2 == 0)
-  //   {
-  //     strip.setAllLedsColor(255, 255, 0);
-  //     color = YELLOW;
-  //   }
-  //   break;
-
-  // case YELLOW:
-  //   if (Pack.s_2 == 0)
-  //   {
-  //     strip.setAllLedsColor(255, 255, 255);
-  //     color = WHITE;
-  //   }
-  //   break;
-
-  // case WHITE:
-  //   if (Pack.s_2 == 0)
-  //   {
-  //     strip.setAllLedsColor(0, 0, 0);
-  //     color = BLACK;
-  //   }
-  //   break;
-
-  // default:
-  //   break;
-  // }
-
-  // led control
-  // int T = rangeToFlashTime();
-  // switch (T)
-  // {
-  // case -1:
-  //   switchCase1();
-  //   // strip.setAllLedsColor(0, 255, 0);
-  //   break;
-  // case -2:
-  //   strip.setAllLedsColor(255, 0, 0);
-  //   led_counter = 0;
-  //   break;
-  // default:
-  //   if (led_counter > T)
-  //   {
-  //     led_counter = 0;
-  //     if (led_power == 0)
-  //     {
-  //       strip.setAllLedsColor(255, 255, 0);
-  //       led_power = 1;
-  //     }
-  //     else if (led_power == 1)
-  //     {
-  //       strip.setAllLedsColor(0, 0, 0);
-  //       led_power = 0;
-  //     }
-  //   }
-  //   break;
-  // }
-
-  // color control
 }
