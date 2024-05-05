@@ -6,7 +6,6 @@
 
 // int beepNumber = 0;
 int beepPin = A0;
-int beep_counter = 0;
 int beepPower;
 
 int rangeToBeeptime()
@@ -51,9 +50,7 @@ void beep_loop()
     //     digitalWrite(beepPin, HIGH);
     //     break;
     // default:
-    //     if (beep_counter > T / 10)
     //     {
-    //         beep_counter = 0;
     //         if (beepPower == 0)
     //         {
     //             digitalWrite(beepPin, HIGH);

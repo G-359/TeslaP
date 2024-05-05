@@ -10,7 +10,10 @@
 
 void timerFired()
 {
-  light_counter++;
+  led_counter++;
+  wheel_counter++;
+  back_counter++;
+  servo_counter++;
   us_measure_timer++;
 }
 
