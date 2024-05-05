@@ -53,7 +53,7 @@
 void timerFired()
 {
   beep_counter++;
-  led_counter++;
+  light_counter++;
   wheel_counter++;
   back_counter++;
   servo_counter++;

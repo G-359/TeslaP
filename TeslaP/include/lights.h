@@ -1,4 +1,4 @@
 void lights_setup();
 void lights_loop();
 
-extern int led_counter;
+extern int light_counter;
