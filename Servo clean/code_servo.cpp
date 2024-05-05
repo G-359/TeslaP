@@ -1,10 +1,12 @@
 #include <Arduino.h>
 #include <Servo.h>
-#include "app-servo.h"
 #include "ultrasound.h"
-#include "packets.h"
+#include "struct.h"
 
 #define SERVO_PIN 2
+
+float servo_direction = 0;
+bool servo_done = false;
 
 typedef enum direction
 {
@@ -22,20 +24,21 @@ typedef enum direction
 } direction_t;
 direction_t dir;
 
-float servo_direction = 0;
-
 Servo vero; // create servo object to control a servo
 // twelve servo objects can be created on most boards
+
+int pos = 0; // variable to store the servo position
 
 void servo_setup()
 {
   vero.attach(SERVO_PIN); // attaches the servo on pin 9 to the servo object
   vero.write(direction::dir_l_90);
   Serial.begin(9600);
+  servo_done = false;
 }
 
 void servo_loop()
 {
-  servo_direction = 180.0 / 1023.0 * (float)Pack.pot1;
+  servo_direction = 180.0 / 1023.0 * (float)Pack.pot_1;
   vero.write(servo_direction);
 }
