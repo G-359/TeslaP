@@ -54,8 +54,7 @@ void timerFired()
 {
   beep_counter++;
   light_counter++;
-  wheel_counter++;
-  back_counter++;
+  servo_counter++;
   us_measure_timer++;
 }
 
