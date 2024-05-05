@@ -1,6 +1,5 @@
 #include <SPI.h>
 #include <RF24.h>
-
 #include "packets.h"
 
 #define PIN_SPI_CE 9
@@ -14,7 +13,6 @@ bool remote_ready = false;
 
 void remote_rx_setup()
 {
-    Serial.begin(9600);
     // RF24L01 initialization steps
     if (radio.begin())
     {                                        // initialize RF24
@@ -29,7 +27,6 @@ void remote_rx_setup()
     else
     {
         Serial.println("Not found the RF chip!");
-        remote_ready = false;
     }
 }
 
@@ -43,19 +40,19 @@ void remote_rx_loop()
 
         // for (int i = 0; i < sizeof(P) / 2; i++)
         Serial.print(Pack.pot1);
-        Serial.print('\t');
+        Serial.print(' ');
         Serial.print(Pack.pot2);
-        Serial.print('\t');
+        Serial.print(' ');
         Serial.print(Pack.x);
-        Serial.print('\t');
+        Serial.print(' ');
         Serial.print(Pack.y);
-        Serial.print('\t');
+        Serial.print(' ');
         Serial.print(Pack.z);
-        Serial.print('\t');
+        Serial.print(' ');
         Serial.print(Pack.s1);
-        Serial.print('\t');
+        Serial.print(' ');
         Serial.print(Pack.s2);
-        Serial.print('\t');
+        Serial.print(' ');
         Serial.print(Pack.s3);
         Serial.print('\n');
     }
