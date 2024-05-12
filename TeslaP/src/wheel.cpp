@@ -90,9 +90,9 @@ void wheel_setup()
 void wheel_loop()
 {
 
-    if (last_pack_update != pack_update)
+    if (last_pack_update != packet_id)
     {
-        last_pack_update = pack_update;
+        last_pack_update = packet_id;
         acceleration = Pack.x - 508;
         direction = Pack.y - 509;
         if (acceleration < 0)

@@ -11,4 +11,4 @@ struct my_pack_st
 };
 
 extern struct my_pack_st Pack; // define an array to save data from remote controller
-extern int pack_update;
+extern int packet_id;
