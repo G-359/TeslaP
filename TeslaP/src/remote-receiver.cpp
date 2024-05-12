@@ -8,21 +8,27 @@
 #define PIN_SPI_CSN 10
 
 RF24 radio(PIN_SPI_CE, PIN_SPI_CSN); // define an object to control RF24L01
-const byte addresses[6] = "nhl24";   // set commutation address, same to remote controller
+byte remote_name[6];   // set commutation address, same to remote controller
 struct my_pack_st Pack;              // define an array to save data from remote controller
 int packet_id = 0;
 bool remote_ready = false;
 
 void remote_rx_setup()
 {
+
+#if 1
+EEPROM.put(0, "ZXM123");
+#endif
+
     // RF24L01 initialization steps
     if (radio.begin())
-    {                                        // initialize RF24
+    {                                       // initialize RF24
+        EEPROM.get(0, remote_name);
         radio.setPALevel(RF24_PA_MAX);       // set power amplifier (PA) level
         radio.setDataRate(RF24_1MBPS);       // set data rate through the air
         radio.setRetries(0, 15);             // set the number and delay of retries
-        radio.openWritingPipe(addresses);    // open a pipe for writing
-        radio.openReadingPipe(1, addresses); // open a pipe for reading
+        radio.openWritingPipe(remote_name);    // open a pipe for writing
+        radio.openReadingPipe(1, remote_name); // open a pipe for reading
         radio.startListening();              // start monitoringtart listening on the pipes opened
         Serial.println("Start listening remote data ... ");
     }
