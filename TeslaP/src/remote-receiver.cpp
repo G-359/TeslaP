@@ -1,5 +1,7 @@
 #include <SPI.h>
 #include <RF24.h>
+#include <EEPROM.h>
+
 #include "packets.h"
 
 #define PIN_SPI_CE 9
@@ -8,7 +10,7 @@
 RF24 radio(PIN_SPI_CE, PIN_SPI_CSN); // define an object to control RF24L01
 const byte addresses[6] = "nhl24";   // set commutation address, same to remote controller
 struct my_pack_st Pack;              // define an array to save data from remote controller
-int pack_update = 0;
+int packet_id = 0;
 bool remote_ready = false;
 
 void remote_rx_setup()
@@ -32,28 +34,29 @@ void remote_rx_setup()
 
 void remote_rx_loop()
 {
-    if (radio.available())
-    { // if receive the data
-        remote_ready = true;
-        radio.read(&Pack, sizeof(Pack)); // read data
-        pack_update++;
-
-        // for (int i = 0; i < sizeof(P) / 2; i++)
-        Serial.print(Pack.pot1);
-        Serial.print(' ');
-        Serial.print(Pack.pot2);
-        Serial.print(' ');
-        Serial.print(Pack.x);
-        Serial.print(' ');
-        Serial.print(Pack.y);
-        Serial.print(' ');
-        Serial.print(Pack.z);
-        Serial.print(' ');
-        Serial.print(Pack.s1);
-        Serial.print(' ');
-        Serial.print(Pack.s2);
-        Serial.print(' ');
-        Serial.print(Pack.s3);
-        Serial.print('\n');
+    if (!(radio.available()))
+    {
+        return;
     }
+    radio.read(&Pack, sizeof(Pack)); // read data
+    remote_ready = true;
+    packet_id++;
+
+    // for (int i = 0; i < sizeof(P) / 2; i++)
+    Serial.print(Pack.pot1);
+    Serial.print(' ');
+    Serial.print(Pack.pot2);
+    Serial.print(' ');
+    Serial.print(Pack.x);
+    Serial.print(' ');
+    Serial.print(Pack.y);
+    Serial.print(' ');
+    Serial.print(Pack.z);
+    Serial.print(' ');
+    Serial.print(Pack.s1);
+    Serial.print(' ');
+    Serial.print(Pack.s2);
+    Serial.print(' ');
+    Serial.print(Pack.s3);
+    Serial.print('\n');
 }
