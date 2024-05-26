@@ -7,6 +7,7 @@
 #include "wheel.h"
 #include "app-servo.h"
 #include "remote-receiver.h"
+#include "key.h"
 
 void timerFired()
 {
@@ -24,6 +25,7 @@ void setup()
   servo_setup();
   FlexiTimer2::set(10, timerFired);
   FlexiTimer2::start();
+  key_setup();
 }
 
 void loop()
@@ -34,4 +36,5 @@ void loop()
   beep_loop();
   wheel_loop();
   servo_loop();
+  key_loop();
 }

@@ -7,19 +7,6 @@
 #define PIN_MOTOR_PWM_RIGHT 5
 #define PIN_MOTOR_PWM_LEFT 6
 
-int turning_on = 0;
-int turning_right = 1;
-int last_pack_update = 0;
-int motorRun_max = 255;
-int motorRun_min = -255;
-
-int acceleration = 0;
-int direction = 0;
-int spin_speed_l;
-int spin_speed_r;
-int base_speed = 100;
-int current_speed = 0;
-bool stop = true;
 
 typedef enum wheel_state
 {
@@ -61,6 +48,9 @@ void motorRun(int speedl, int speedr)
 
 void reset_speed()
 {
+    int spin_speed_l;
+    int spin_speed_r;
+    int base_speed = 100;
     spin_speed_l = base_speed;
     spin_speed_r = base_speed;
 }
@@ -82,6 +72,8 @@ void wheel_backward()
 
 void wheel_setup()
 {
+    int base_speed = 100;
+    int current_speed = 0;
     Serial.begin(9600);
     wheel_stop();
     current_speed = base_speed;
@@ -89,6 +81,12 @@ void wheel_setup()
 
 void wheel_loop()
 {
+    int last_pack_update = 0;
+    int acceleration = 0;
+    int direction = 0;
+    int spin_speed_l;
+    int spin_speed_r;
+    int current_speed = 0;
 
     if (last_pack_update != packet_id)
     {
@@ -97,41 +95,37 @@ void wheel_loop()
         direction = Pack.y - 509;
         if (acceleration < 0)
         {
-            current_speed--;
-            if (current_speed <= 0)
-            {
-                wheel_backward();
-            }
+            wheel_backward();
         }
-        else if (acceleration > 0)
-        {
-            current_speed++;
-        }
+    }
+    else if (acceleration > 0)
+    {
+        current_speed++;
+    }
 
-        if (direction <= -5)
-        {
-            spin_speed_l = current_speed + direction;
-            spin_speed_r = current_speed;
-        }
-        else if (direction > -5 && direction < 5)
-        {
-            spin_speed_l = current_speed;
-            spin_speed_r = current_speed;
-        }
-        else
-        {
-            spin_speed_l = current_speed;
-            spin_speed_r = current_speed - direction;
-        }
+    if (direction <= -5)
+    {
+        spin_speed_l = current_speed + direction;
+        spin_speed_r = current_speed;
+    }
+    else if (direction > -5 && direction < 5)
+    {
+        spin_speed_l = current_speed;
+        spin_speed_r = current_speed;
+    }
+    else
+    {
+        spin_speed_l = current_speed;
+        spin_speed_r = current_speed - direction;
+    }
 
-        if (Pack.s1 == 0)
-        {
-            wheel_stop();
-            reset_speed();
-        }
-        else
-        {
-            motorRun(spin_speed_l, spin_speed_r);
-        }
+    if (Pack.s1 == 0)
+    {
+        wheel_stop();
+        reset_speed();
+    }
+    else
+    {
+        motorRun(spin_speed_l, spin_speed_r);
     }
 }
