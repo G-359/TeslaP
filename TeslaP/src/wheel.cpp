@@ -8,12 +8,6 @@
 #define PIN_MOTOR_PWM_LEFT 6
 
 
-int spin_speed_l;
-int spin_speed_r;
-int base_speed = 100;
-int current_speed = 0;
-bool stop = true;
-
 typedef enum wheel_state
 {
     START = 0,
@@ -54,6 +48,9 @@ void motorRun(int speedl, int speedr)
 
 void reset_speed()
 {
+    int spin_speed_l;
+    int spin_speed_r;
+    int base_speed = 100;
     spin_speed_l = base_speed;
     spin_speed_r = base_speed;
 }
@@ -75,6 +72,8 @@ void wheel_backward()
 
 void wheel_setup()
 {
+    int base_speed = 100;
+    int current_speed = 0;
     Serial.begin(9600);
     wheel_stop();
     current_speed = base_speed;
@@ -85,6 +84,9 @@ void wheel_loop()
     int last_pack_update = 0;
     int acceleration = 0;
     int direction = 0;
+    int spin_speed_l;
+    int spin_speed_r;
+    int current_speed = 0;
 
     if (last_pack_update != packet_id)
     {
